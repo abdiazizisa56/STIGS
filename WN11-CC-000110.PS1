@@ -1,4 +1,4 @@
-#
+<#
 .SYNOPSIS
     This PowerShell script prevents printing over HTTP.
 
