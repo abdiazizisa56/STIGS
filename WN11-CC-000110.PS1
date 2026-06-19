@@ -1,6 +1,6 @@
-<#
+#
 .SYNOPSIS
-    This PowerShell script prevents the network selection UI from displaying on the logon screen.
+    This PowerShell script prevents printing over HTTP.
 
 .NOTES
     Author          : Abdiaziz Isa
@@ -11,8 +11,8 @@
     Version         : 1.0
     CVEs            : N/A
     Plugin IDs      : N/A
-    STIG-ID         : WN11-CC-000120
-    Documentation   : https://stigaview.com/products/win11/v2r7/WN11-CC-000120/
+    STIG-ID         : WN11-CC-000110
+    Documentation   : https://stigaview.com/products/win11/v2r7/WN11-CC-000110/
 
 .TESTED ON
     Date(s) Tested  : 
@@ -23,18 +23,18 @@
 .USAGE
     Put any usage instructions here.
     Example syntax:
-    PS C:\> .\__remediation_template(STIG-ID-WN11-CC-000120).ps1 
+    PS C:\> .\__remediation_template(STIG-ID-WN11-CC-000110).ps1 
 #>
 
 # YOUR CODE GOES HERE
 
-$path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
+$path = "HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Printers"
 
 New-Item -Path $path -Force | Out-Null
 
 New-ItemProperty `
   -Path $path `
-  -Name "DontDisplayNetworkSelectionUI" `
+  -Name "DisableHTTPPrinting" `
   -PropertyType DWord `
   -Value 1 `
   -Force | Out-Null
